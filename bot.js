@@ -1,6 +1,7 @@
 var Twit = require('twit'),
 	async = require('async'),
 	request = require('request');
+	_ = require('lodash');
 
 // authentication for the Twitter API
 var t = new Twit({
@@ -42,7 +43,12 @@ getAntonyms = function (botData, cb) {
 	var word = "high";
 	var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
 
-	console.log(botData.adjList);
+	// console.log(botData.adjList);
+	_.each(botData.adjList, function (adj) {
+		console.log(adj);
+	})
+
+
 
 	// for (var i = 0; i < json.length; i++) {
 	// 			// console.log(json[i] + " " + json[i].word);
