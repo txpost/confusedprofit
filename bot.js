@@ -38,7 +38,7 @@ getAdjectives = function (cb) {
 	request(randomWordURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
-			for (var i = 0; json.length; i++) {
+			for (var i = 0; i < json.length; i++) {
 				// console.log(json[i] + " " + json[i].word);
 				var adjective = json[i].word;
 				console.log(adjective);
