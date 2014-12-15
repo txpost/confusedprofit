@@ -51,15 +51,20 @@ getAdjectives = function (cb) {
 }
 
 
-// make sure '2048' is in the tweet rather than the date
-verifyTweet = function (botData, cb) {
-	var match2048 = botData.baseTweet.match(/2048/);
-	if(match2048) {
-		cb(null, botData);
-	} else {
-		console.log("It appears 2048 isn't in the text. Must be in the date. ABORT!");
-		cb(err, botData);
-	}
+// format the tweet
+formatTweet = function (botData, cb) {
+	
+	var tweetText = botData.photoTitle;
+	var tweetOwnerName = botData.photoOwnerName;
+	var tweetOwnerID = botData.photoOwnerID;
+	var tweetPicID = botData.photoID;
+
+	// example url to get: https://www.flickr.com/photos/48097026@N02/15956844955/in/pool-urbansketches
+	var tweetURL = "https://www.flickr.com/photos/" + tweetOwnerID + "/" + tweetPicID + "/in/pool-urbansketches";
+
+	var tweet = '"' + tweetText + '" by ' + tweetOwnerName + ": " + tweetURL;
+	botData.tweetBlock = tweet;
+	cb(null, botData);
 }
 
 
