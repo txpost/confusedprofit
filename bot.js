@@ -34,11 +34,11 @@ getAdjectives = function (cb) {
 	request(randomWordURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
-			console.log(json);
 			for (var i = 0; json.length; i++) {
 				console.log(json[i] + " " + json[i].word);
 				var adjective = json[i].word;
 				var antonym = getAntonym(adjective);
+				console.log("this is the first antonym checkpoint: " + antonym);
 				if (antonym) {
 					console.log("this is the antonym: " + antonym);
 					break;
