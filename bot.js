@@ -45,14 +45,14 @@ getAntonyms = function (botData, cb) {
 
 	// console.log(botData.adjList);
 	_.each(botData.adjList, function (adj) {
-		console.log(adj.word);
+		// console.log(adj.word);
 		request(antonymURL, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				var json = JSON.parse(body);
-				// console.log(json[0].words);
+				console.log(json[0].words);
 				// console.log(json[0]);
 				if (json[0] != undefined) {
-					console.log(adj.word + " is " + json[0].words[0]);
+					// console.log(adj.word + " is " + json[0].words[0]);
 				} else {
 					// return undefined;
 				};
