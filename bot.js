@@ -98,4 +98,4 @@ setInterval(function () {
 	catch (e) {
 		console.log(e);
 	}
-}, 60000 * 60 * 3);
+}, 60000 * 1);
