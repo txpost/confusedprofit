@@ -31,7 +31,7 @@ getAdjectives = function (cb) {
 	var wordnikKey = process.env.WORDNIK_KEY;
 	var randomWordURL = "http://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=10&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=" + wordCount + "&api_key=" + wordnikKey;
 
-	request(randomWordsURL, function (error, response, body) {
+	request(randomWordURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
 			console.log(json);
