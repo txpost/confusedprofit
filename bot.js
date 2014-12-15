@@ -22,6 +22,8 @@ getAntonym = function (word) {
 			var antonym = json[0].words[0];
 			// return antonym;
 			return "made it to antonym";
+		} else {
+			console.log("there was a problem with the antonym" + error);
 		};
 	})
 }
