@@ -40,19 +40,18 @@ getAdjectives = function (cb) {
 
 getAntonyms = function (botData, cb) {
 	var wordnikKey = process.env.WORDNIK_KEY;
-	var word = "high";
-	var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
 
 	// console.log(botData.adjList);
 	_.each(botData.adjList, function (adj) {
 		// console.log(adj.word);
+		var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + adj.word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
 		request(antonymURL, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				var json = JSON.parse(body);
-				console.log(json[0].words);
+				// console.log(json[0].words);
 				// console.log(json[0]);
 				if (json[0] != undefined) {
-					// console.log(adj.word + " is " + json[0].words[0]);
+					console.log(adj.word + " is " + json[0].words[0]);
 				} else {
 					// return undefined;
 				};
