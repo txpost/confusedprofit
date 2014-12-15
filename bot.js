@@ -14,16 +14,16 @@ var t = new Twit({
 getAntonym = function (word) {
 	var wordnikKey = process.env.WORDNIK_KEY;
 	var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
+
 	request(antonymURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
 			console.log(json[0].words[0]);
 			var antonym = json[0].words[0];
-			return antonym;
+			// return antonym;
+			return "made it to antonym";
 		};
 	})
-
-	return "made it to antonym";
 }
 
 
