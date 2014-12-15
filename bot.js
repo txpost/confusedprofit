@@ -39,6 +39,7 @@ getAdjectives = function (cb) {
 
 getAntonyms = function (botData, cb) {
 	var wordnikKey = process.env.WORDNIK_KEY;
+	var word = "high";
 	var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
 
 	console.log(botData.adjList);
