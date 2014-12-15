@@ -25,7 +25,10 @@ getAntonym = function (word) {
 			// console.log(json[0].words);
 			// console.log(json[0]);
 			if (json[0] != undefined) {
-				console.log(json[0].words);
+				return json[0].words[0]; 
+				// console.log(json[0].words);
+			} else {
+				return undefined;
 			};
 			// var antonym = json[0].words[0];
 			// return antonym;
@@ -52,10 +55,9 @@ getAdjectives = function (cb) {
 				// console.log(adjective);
 				var antonym = getAntonym(adjective);
 				// console.log("this is the first antonym checkpoint: " + antonym);
-				// if (antonym) {
-				// 	console.log("this is the antonym: " + antonym);
-				// 	break;
-				// };
+				if (antonym != undefined) {
+					console.log("the antonym for " + adjective + " is: " + antonym);
+				};
 			}
 			// var botData = {
 			// 	photoID: json.photos.photo[0].id,
