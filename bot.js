@@ -19,7 +19,7 @@ getAntonym = function (word) {
 	var wordnikKey = process.env.WORDNIK_KEY;
 	var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
 
-	var antonym = request(antonymURL, function (error, response, body) {
+	request(antonymURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
 			// console.log(json[0].words);
@@ -38,8 +38,6 @@ getAntonym = function (word) {
 			console.log("there was a problem with the antonym" + error);
 		};
 	})
-
-	return antonym;
 }
 
 
@@ -56,8 +54,34 @@ getAdjectives = function (cb) {
 				// console.log(json[i] + " " + json[i].word);
 				var adjective = json[i].word;
 				// console.log(adjective);
-				var antonym = getAntonym(adjective);
-				console.log(adjective + " is: " + antonym);
+				// var antonym = getAntonym(adjective);
+
+				var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + adjective + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
+
+				request(antonymURL, function (error, response, body) {
+					if (!error && response.statusCode == 200) {
+						var json = JSON.parse(body);
+						// console.log(json[0].words);
+						// console.log(json[0]);
+						if (json[0] != undefined) {
+							// console.log(json[0].words[0]);
+							var antonym = json[0].words[0];
+							console.log(adjective + " is: " + antonym);
+							// console.log(json[0].words);
+							// return json[0].words[0];
+						} else {
+							// return undefined;
+						};
+						// var antonym = json[0].words[0];
+						// return antonym;
+						// return "made it to antonym";
+					} else {
+						console.log("there was a problem with the antonym" + error);
+					};
+				})
+
+
+				// console.log(adjective + " is: " + antonym);
 				// if (antonym != undefined) {
 				// 	console.log("the antonym for " + adjective + " is: " + antonym);
 				// };
