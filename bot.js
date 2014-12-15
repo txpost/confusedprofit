@@ -15,31 +15,6 @@ var t = new Twit({
 
 // antonym: http://api.wordnik.com:80/v4/word.json/high/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=76e5465d283f80dbfb3090c68fe06731740c58d996136493e
 
-getAntonym = function (word) {
-	var wordnikKey = process.env.WORDNIK_KEY;
-	var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
-
-	request(antonymURL, function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			var json = JSON.parse(body);
-			// console.log(json[0].words);
-			// console.log(json[0]);
-			if (json[0] != undefined) {
-				console.log(json[0].words[0]);
-				// console.log(json[0].words);
-				return json[0].words[0];
-			} else {
-				return undefined;
-			};
-			// var antonym = json[0].words[0];
-			// return antonym;
-			// return "made it to antonym";
-		} else {
-			console.log("there was a problem with the antonym" + error);
-		};
-	})
-}
-
 
 // get the most recent tweet that matches our query
 getAdjectives = function (cb) {
@@ -50,67 +25,81 @@ getAdjectives = function (cb) {
 	request(randomWordURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
-			for (var i = 0; i < json.length; i++) {
-				// console.log(json[i] + " " + json[i].word);
-				var adjective = json[i].word;
-				console.log("adjective: " + adjective);
-				// var antonym = getAntonym(adjective);
-
-				var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + adjective + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
-
-				request(antonymURL, function (error, response, body) {
-					if (!error && response.statusCode == 200) {
-						var json = JSON.parse(body);
-						// console.log(json[0].words);
-						// console.log(json[0]);
-						if (json[0] != undefined) {
-							// console.log(json[0].words[0]);
-							var antonym = json[0].words[0];
-							// console.log(adjective + " is: " + antonym);
-							console.log("antonym: " + antonym)
-							// console.log(json[0].words);
-							// return json[0].words[0];
-						} else {
-							// return undefined;
-						};
-						// var antonym = json[0].words[0];
-						// return antonym;
-						// return "made it to antonym";
-					} else {
-						console.log("there was a problem with the antonym" + error);
-					};
-				})
-
-
-				// console.log(adjective + " is: " + antonym);
-				// if (antonym != undefined) {
-				// 	console.log("the antonym for " + adjective + " is: " + antonym);
-				// };
+			var botData = {
+				adjList: json,
 			}
-			// var botData = {
-			// 	photoID: json.photos.photo[0].id,
-			// 	photoOwnerID: json.photos.photo[0].owner,
-			// 	photoOwnerName: json.photos.photo[0].ownername,
-			// 	photoTitle: json.photos.photo[0].title
-			// }
-			// console.log("here's the photoID: " + botData.photoID);
-			// cb(null, botData);
+			cb(null, botData);
+		} else {
+			console.log("there was a problem with the adjectives" + error);
+			cb(error, botData);
 		};
 	})
+}
 
-	// t.get('search/tweets', {q: query, count: 1}, function (err, data, response) {
-	// 	if (!err) {
-	// 		var botData = {
-	// 			baseTweet: data.statuses[0].text.toLowerCase(),
-	// 			tweetID: data.statuses[0].id_str,
-	// 			tweetUsername: data.statuses[0].user.screen_name
+
+getAntonyms = function (botData, cb) {
+	var wordnikKey = process.env.WORDNIK_KEY;
+	var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
+
+	console.log(botData.adjList);
+
+	// for (var i = 0; i < json.length; i++) {
+	// 			// console.log(json[i] + " " + json[i].word);
+	// 			var adjective = json[i].word;
+	// 			console.log("adjective: " + adjective);
+	// 			// var antonym = getAntonym(adjective);
+
+	// 			var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + adjective + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
+
+	// 			request(antonymURL, function (error, response, body) {
+	// 				if (!error && response.statusCode == 200) {
+	// 					var json = JSON.parse(body);
+	// 					// console.log(json[0].words);
+	// 					// console.log(json[0]);
+	// 					if (json[0] != undefined) {
+	// 						// console.log(json[0].words[0]);
+	// 						var antonym = json[0].words[0];
+	// 						// console.log(adjective + " is: " + antonym);
+	// 						console.log("antonym: " + antonym)
+	// 						// console.log(json[0].words);
+	// 						// return json[0].words[0];
+	// 					} else {
+	// 						// return undefined;
+	// 					};
+	// 					// var antonym = json[0].words[0];
+	// 					// return antonym;
+	// 					// return "made it to antonym";
+	// 				} else {
+	// 					console.log("there was a problem with the antonym" + error);
+	// 				};
+	// 			})
+
+
+	// 			// console.log(adjective + " is: " + antonym);
+	// 			// if (antonym != undefined) {
+	// 			// 	console.log("the antonym for " + adjective + " is: " + antonym);
+	// 			// };
+	// 		}
+
+	// request(antonymURL, function (error, response, body) {
+	// 	if (!error && response.statusCode == 200) {
+	// 		var json = JSON.parse(body);
+	// 		// console.log(json[0].words);
+	// 		// console.log(json[0]);
+	// 		if (json[0] != undefined) {
+	// 			console.log(json[0].words[0]);
+	// 			// console.log(json[0].words);
+	// 			return json[0].words[0];
+	// 		} else {
+	// 			return undefined;
 	// 		};
-	// 		cb(null, botData);
+	// 		// var antonym = json[0].words[0];
+	// 		// return antonym;
+	// 		// return "made it to antonym";
 	// 	} else {
-	// 		console.log("There was an error getting a public Tweet. ABORT!");
-	// 		cb(err, botData);
-	// 	}
-	// });
+	// 		console.log("there was a problem with the antonym" + error);
+	// 	};
+	// })
 }
 
 
@@ -143,6 +132,7 @@ postTweet = function (botData, cb) {
 run = function () {
 	async.waterfall([
 		getAdjectives,
+		getAntonyms,
 		formatTweet,
 		postTweet
 	],
