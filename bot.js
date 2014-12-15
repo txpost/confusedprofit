@@ -22,7 +22,8 @@ getAntonym = function (word) {
 	request(antonymURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
-			console.log(json[0].words);
+			// console.log(json[0].words);
+			console.log(typeof json);
 			// var antonym = json[0].words[0];
 			// return antonym;
 			// return "made it to antonym";
