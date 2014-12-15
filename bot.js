@@ -18,10 +18,10 @@ getAntonym = function (word) {
 	request(antonymURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
-			console.log(json[0].words[0]);
-			var antonym = json[0].words[0];
+			console.log(json);
+			// var antonym = json[0].words[0];
 			// return antonym;
-			return "made it to antonym";
+			// return "made it to antonym";
 		} else {
 			console.log("there was a problem with the antonym" + error);
 		};
@@ -41,8 +41,8 @@ getAdjectives = function (cb) {
 			for (var i = 0; i < json.length; i++) {
 				// console.log(json[i] + " " + json[i].word);
 				var adjective = json[i].word;
-				console.log(adjective);
-				// var antonym = getAntonym(adjective);
+				// console.log(adjective);
+				var antonym = getAntonym(adjective);
 				// console.log("this is the first antonym checkpoint: " + antonym);
 				// if (antonym) {
 				// 	console.log("this is the antonym: " + antonym);
