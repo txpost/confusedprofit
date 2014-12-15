@@ -23,7 +23,10 @@ getAntonym = function (word) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
 			// console.log(json[0].words);
-			console.log(json[0]);
+			// console.log(json[0]);
+			if (json[0] != undefined) {
+				console.log(json[0].words);
+			};
 			// var antonym = json[0].words[0];
 			// return antonym;
 			// return "made it to antonym";
