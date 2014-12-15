@@ -22,6 +22,8 @@ getAntonym = function (word) {
 			return antonym;
 		};
 	})
+
+	return "made it to antonym";
 }
 
 
@@ -39,10 +41,10 @@ getAdjectives = function (cb) {
 				var adjective = json[i].word;
 				var antonym = getAntonym(adjective);
 				console.log("this is the first antonym checkpoint: " + antonym);
-				if (antonym) {
-					console.log("this is the antonym: " + antonym);
-					break;
-				};
+				// if (antonym) {
+				// 	console.log("this is the antonym: " + antonym);
+				// 	break;
+				// };
 			}
 			// var botData = {
 			// 	photoID: json.photos.photo[0].id,
