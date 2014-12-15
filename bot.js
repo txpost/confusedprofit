@@ -39,10 +39,11 @@ getAdjectives = function (cb) {
 		if (!error && response.statusCode == 200) {
 			var json = JSON.parse(body);
 			for (var i = 0; json.length; i++) {
-				console.log(json[i] + " " + json[i].word);
+				// console.log(json[i] + " " + json[i].word);
 				var adjective = json[i].word;
-				var antonym = getAntonym(adjective);
-				console.log("this is the first antonym checkpoint: " + antonym);
+				console.log(adjective);
+				// var antonym = getAntonym(adjective);
+				// console.log("this is the first antonym checkpoint: " + antonym);
 				// if (antonym) {
 				// 	console.log("this is the antonym: " + antonym);
 				// 	break;
