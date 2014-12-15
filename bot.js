@@ -53,7 +53,7 @@ getAdjectives = function (cb) {
 			for (var i = 0; i < json.length; i++) {
 				// console.log(json[i] + " " + json[i].word);
 				var adjective = json[i].word;
-				// console.log(adjective);
+				console.log(adjective);
 				// var antonym = getAntonym(adjective);
 
 				var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + adjective + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
@@ -66,7 +66,8 @@ getAdjectives = function (cb) {
 						if (json[0] != undefined) {
 							// console.log(json[0].words[0]);
 							var antonym = json[0].words[0];
-							console.log(adjective + " is: " + antonym);
+							// console.log(adjective + " is: " + antonym);
+							console.log(antonym)
 							// console.log(json[0].words);
 							// return json[0].words[0];
 						} else {
