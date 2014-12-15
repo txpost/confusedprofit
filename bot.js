@@ -45,7 +45,7 @@ getAntonyms = function (botData, cb) {
 
 	// console.log(botData.adjList);
 	_.each(botData.adjList, function (adj) {
-		console.log(adj);
+		console.log(adj.word);
 	})
 
 
