@@ -51,20 +51,18 @@ getAntonyms = function (botData, cb) {
 				// console.log(json[0].words);
 				// console.log(json[0]);
 				if (json[0] != undefined) {
-					// botData.adjective = adj.word;
-					// botData.antonym = json[0].words[0];
-					console.log("Buy " + adj.word + ". Sell " + json[0].words[0] + ". Profit.");
-				} else {
-					// return undefined;
+					botData.adjective = adj.word;
+					botData.antonym = json[0].words[0];
+					// console.log("Buy " + adj.word + ". Sell " + json[0].words[0] + ". Profit.");
+					return false;
 				};
-				// var antonym = json[0].words[0];
-				// return antonym;
-				// return "made it to antonym";
 			} else {
 				console.log("there was a problem with the antonym" + error);
 			};
 		})
 	})
+	console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit."
+	cb(null, botData);
 
 
 
@@ -131,17 +129,8 @@ getAntonyms = function (botData, cb) {
 // format the tweet
 formatTweet = function (botData, cb) {
 	
-	var tweetText = botData.photoTitle;
-	var tweetOwnerName = botData.photoOwnerName;
-	var tweetOwnerID = botData.photoOwnerID;
-	var tweetPicID = botData.photoID;
-
-	// example url to get: https://www.flickr.com/photos/48097026@N02/15956844955/in/pool-urbansketches
-	var tweetURL = "https://www.flickr.com/photos/" + tweetOwnerID + "/" + tweetPicID + "/in/pool-urbansketches";
-
-	var tweet = '"' + tweetText + '" by ' + tweetOwnerName + ": " + tweetURL;
-	botData.tweetBlock = tweet;
-	cb(null, botData);
+	console.log("made it to formatTweet");
+	// cb(null, botData);
 }
 
 
