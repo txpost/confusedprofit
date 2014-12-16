@@ -41,8 +41,7 @@ getAdjectives = function (cb) {
 getAntonyms = function (botData, cb) {
 	var wordnikKey = process.env.WORDNIK_KEY;
 
-	botData.adjectives = [];
-	botData.antonyms = [];
+	botData.pairs = {};
 
 	// console.log(botData.adjList);
 	_.each(botData.adjList, function (adj) {
@@ -54,11 +53,10 @@ getAntonyms = function (botData, cb) {
 				// console.log(json[0].words);
 				// console.log(json[0]);
 				if (json[0] != undefined) {
-					// botData.adjectives = adj.word;
-					// botData.antonym = json[0].words[0];
-					adj.antonym = json[0].words[0];
+					botData.adjective = adj.word;
+					botData.antonym = json[0].words[0];
 					// cb(null, botData);
-					// console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
+					console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 				};
 			} else {
 				console.log("there was a problem with the antonym" + error);
@@ -68,66 +66,6 @@ getAntonyms = function (botData, cb) {
 	// console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 	console.log(botData);
 	cb(null, botData);
-
-
-
-	// for (var i = 0; i < json.length; i++) {
-	// 			// console.log(json[i] + " " + json[i].word);
-	// 			var adjective = json[i].word;
-	// 			console.log("adjective: " + adjective);
-	// 			// var antonym = getAntonym(adjective);
-
-	// 			var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + adjective + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
-
-	// 			request(antonymURL, function (error, response, body) {
-	// 				if (!error && response.statusCode == 200) {
-	// 					var json = JSON.parse(body);
-	// 					// console.log(json[0].words);
-	// 					// console.log(json[0]);
-	// 					if (json[0] != undefined) {
-	// 						// console.log(json[0].words[0]);
-	// 						var antonym = json[0].words[0];
-	// 						// console.log(adjective + " is: " + antonym);
-	// 						console.log("antonym: " + antonym)
-	// 						// console.log(json[0].words);
-	// 						// return json[0].words[0];
-	// 					} else {
-	// 						// return undefined;
-	// 					};
-	// 					// var antonym = json[0].words[0];
-	// 					// return antonym;
-	// 					// return "made it to antonym";
-	// 				} else {
-	// 					console.log("there was a problem with the antonym" + error);
-	// 				};
-	// 			})
-
-
-	// 			// console.log(adjective + " is: " + antonym);
-	// 			// if (antonym != undefined) {
-	// 			// 	console.log("the antonym for " + adjective + " is: " + antonym);
-	// 			// };
-	// 		}
-
-	// request(antonymURL, function (error, response, body) {
-	// 	if (!error && response.statusCode == 200) {
-	// 		var json = JSON.parse(body);
-	// 		// console.log(json[0].words);
-	// 		// console.log(json[0]);
-	// 		if (json[0] != undefined) {
-	// 			console.log(json[0].words[0]);
-	// 			// console.log(json[0].words);
-	// 			return json[0].words[0];
-	// 		} else {
-	// 			return undefined;
-	// 		};
-	// 		// var antonym = json[0].words[0];
-	// 		// return antonym;
-	// 		// return "made it to antonym";
-	// 	} else {
-	// 		console.log("there was a problem with the antonym" + error);
-	// 	};
-	// })
 }
 
 
