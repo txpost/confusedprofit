@@ -127,7 +127,7 @@ getAntonyms = function (botData, cb) {
 
 // format the tweet
 formatTweet = function (botData, cb) {
-	console.log(botData);
+	console.log(botData.adjective + botData.antonym);
 	console.log("made it to formatTweet");
 	// cb(null, botData);
 }
