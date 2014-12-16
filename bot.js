@@ -61,13 +61,16 @@ getAntonyms = function (botData, cb) {
 					console.log("index " + index);
 					console.log(botData.adjList.length);
 				};
+				if (index === botData.adjList.length - 1) {
+					cb(null, botData);
+				};
 			} else {
 				console.log("there was a problem with the antonym" + error);
 			};
 		});
 	});
 	// console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
-	cb(null, botData);
+	// cb(null, botData);
 }
 
 
