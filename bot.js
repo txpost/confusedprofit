@@ -41,7 +41,7 @@ getAdjectives = function (cb) {
 getAntonyms = function (botData, cb) {
 	var wordnikKey = process.env.WORDNIK_KEY;
 
-	var botData.antonyms = [];
+	botData.antonyms = [];
 	// console.log(botData.adjList);
 
 	_.each(botData.adjList, function (adj) {
