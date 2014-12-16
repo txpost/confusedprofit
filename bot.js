@@ -51,7 +51,9 @@ getAntonyms = function (botData, cb) {
 				// console.log(json[0].words);
 				// console.log(json[0]);
 				if (json[0] != undefined) {
-					console.log(adj.word + " is " + json[0].words[0]);
+					// botData.adjective = adj.word;
+					// botData.antonym = json[0].words[0];
+					console.log("Buy " adj.word + ". Sell " + json[0].words[0] + ". Profit.");
 				} else {
 					// return undefined;
 				};
