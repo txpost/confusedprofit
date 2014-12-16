@@ -53,7 +53,7 @@ getAntonyms = function (botData, cb) {
 				if (json[0] != undefined) {
 					botData.adjective = adj.word;
 					botData.antonym = json[0].words[0];
-					console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
+					// console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 				};
 			} else {
 				console.log("there was a problem with the antonym" + error);
@@ -127,7 +127,7 @@ getAntonyms = function (botData, cb) {
 
 // format the tweet
 formatTweet = function (botData, cb) {
-	
+	console.log(botData);
 	console.log("made it to formatTweet");
 	// cb(null, botData);
 }
