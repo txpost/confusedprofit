@@ -58,8 +58,8 @@ getAntonyms = function (botData, cb) {
 					// cb(null, botData);
 					// console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 					botData.antonyms.push(json[0].words[0]);
-					console.log("index " + index);
-					console.log(botData.adjList.length);
+					// console.log("index " + index);
+					// console.log(botData.adjList.length);
 				};
 				if (index === botData.adjList.length - 1) {
 					cb(null, botData);
@@ -76,7 +76,8 @@ getAntonyms = function (botData, cb) {
 
 // format the tweet
 formatTweet = function (botData, cb) {
-	console.log(botData);
+	// console.log(botData);
+	console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 	console.log("made it to formatTweet");
 	// cb(null, botData);
 }
