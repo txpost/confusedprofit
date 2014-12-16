@@ -41,6 +41,9 @@ getAdjectives = function (cb) {
 getAntonyms = function (botData, cb) {
 	var wordnikKey = process.env.WORDNIK_KEY;
 
+	botData.adjectives = {};
+	botData.antonyms = {};
+
 	// console.log(botData.adjList);
 	_.each(botData.adjList, function (adj) {
 		// console.log(adj.word);
@@ -60,7 +63,7 @@ getAntonyms = function (botData, cb) {
 				console.log("there was a problem with the antonym" + error);
 			};
 		})
-		if (botData.adjective != undefined && botData.antonym != undefined) {
+		if (json[0] != undefined) {
 			return false;
 		};
 	});
