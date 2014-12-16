@@ -60,7 +60,7 @@ getAntonyms = function (botData, cb) {
 				console.log("there was a problem with the antonym" + error);
 			};
 		})
-		if (botData.adjective != undefined and botData.antonym != undefined) {
+		if (botData.adjective != undefined && botData.antonym != undefined) {
 			return false;
 		};
 	});
