@@ -61,7 +61,7 @@ getAntonyms = function (botData, cb) {
 			};
 		})
 	})
-	console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit."
+	console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 	cb(null, botData);
 
 
