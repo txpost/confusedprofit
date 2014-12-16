@@ -44,7 +44,7 @@ getAntonyms = function (botData, cb) {
 	botData.antonyms = [];
 	// console.log(botData.adjList);
 
-	_.each(botData.adjList, function (adj) {
+	_.each(botData.adjList, function (adj, index) {
 		// console.log(adj.word);
 		var antonymURL = "http://api.wordnik.com:80/v4/word.json/" + adj.word + "/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=" + wordnikKey;
 		request(antonymURL, function (error, response, body) {
@@ -58,6 +58,8 @@ getAntonyms = function (botData, cb) {
 					// cb(null, botData);
 					// console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 					botData.antonyms.push(json[0].words[0]);
+					console.log("index " + index);
+					console.log(json[0].length);
 				};
 			} else {
 				console.log("there was a problem with the antonym" + error);
