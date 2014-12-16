@@ -41,8 +41,8 @@ getAdjectives = function (cb) {
 getAntonyms = function (botData, cb) {
 	var wordnikKey = process.env.WORDNIK_KEY;
 
-	botData.adjectives = {};
-	botData.antonyms = {};
+	botData.adjectives = [];
+	botData.antonyms = [];
 
 	// console.log(botData.adjList);
 	_.each(botData.adjList, function (adj) {
@@ -54,8 +54,8 @@ getAntonyms = function (botData, cb) {
 				// console.log(json[0].words);
 				// console.log(json[0]);
 				if (json[0] != undefined) {
-					botData.adjective = adj.word;
-					botData.antonym = json[0].words[0];
+					botData.adjectives.push(adj.word);
+					botData.antonyms.push(json[0].words[0]);
 					// cb(null, botData);
 					// console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 				};
