@@ -65,13 +65,15 @@ getAntonyms = function (botData, cb) {
 	});
 	// console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
 	console.log(botData);
-	cb(null, botData);
+	if (botData.adjective != undefined) {
+		cb(null, botData);
+	};
 }
 
 
 // format the tweet
 formatTweet = function (botData, cb) {
-	// console.log(botData.adjective + " " + botData.antonym);
+	console.log("formatTweet: " + botData.adjective + " " + botData.antonym);
 	console.log("made it to formatTweet");
 	// cb(null, botData);
 }
