@@ -72,10 +72,9 @@ getAntonyms = function (botData, cb) {
 
 // format the tweet
 formatTweet = function (botData, cb) {
-	// console.log(botData);
-	console.log("Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit.");
-	// console.log("made it to formatTweet");
-	// cb(null, botData);
+	var tweet = "Buy " + botData.adjective + ". Sell " + botData.antonym + ". Profit."
+	botData.tweetBlock = tweet;
+	cb(null, botData);
 }
 
 
@@ -115,4 +114,4 @@ setInterval(function () {
 	catch (e) {
 		console.log(e);
 	}
-}, 60000 * 60 * 2);
+}, 60000 * 1);
