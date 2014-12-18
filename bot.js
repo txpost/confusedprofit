@@ -12,11 +12,6 @@ var t = new Twit({
 });
 
 
-// random: http://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=adjective&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=10&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=76e5465d283f80dbfb3090c68fe06731740c58d996136493e
-
-// antonym: http://api.wordnik.com:80/v4/word.json/high/relatedWords?useCanonical=true&relationshipTypes=antonym&limitPerRelationshipType=10&api_key=76e5465d283f80dbfb3090c68fe06731740c58d996136493e
-
-
 // get the most recent tweet that matches our query
 getAdjectives = function (cb) {
 	var wordCount = 100;
